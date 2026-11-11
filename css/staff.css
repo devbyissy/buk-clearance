@@ -1,0 +1,150 @@
+/* Staff pages: office queue, review page and rejection box */
+
+.stat-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.queue-badge {
+    position: relative;
+    z-index: 1;
+    width: 112px;
+    height: 112px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255, 255, 255, .4);
+    background: rgba(255, 255, 255, .08);
+}
+
+.queue-badge__num {
+    font-size: 2.1rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.queue-badge__label {
+    margin-top: 6px;
+    font-size: .6rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #CFE6F2;
+}
+
+.search-box {
+    max-width: 380px;
+    margin: 24px 0 14px;
+}
+
+.card__title {
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+
+.card .table-wrap {
+    box-shadow: none;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+tr.row--mine td {
+    background: #EAF4FA;
+    font-weight: 500;
+}
+
+.history-item {
+    padding: 4px 0;
+}
+
+.history-item p {
+    margin-top: 8px;
+    font-size: .92rem;
+    color: var(--navy);
+}
+
+.history-date {
+    margin-left: 10px;
+    font-size: .8rem;
+    color: var(--muted);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn--danger-solid {
+    background: var(--red);
+    color: #fff;
+    border: none;
+}
+
+.btn--danger-solid:hover {
+    background: #8E2218;
+}
+
+.reason-box {
+    display: none;
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--red-pale);
+    border: 1px solid #EDBDB7;
+    border-radius: 10px;
+}
+
+.reason-box.open {
+    display: block;
+}
+
+.reason-box label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.reason-box textarea {
+    width: 100%;
+    min-height: 84px;
+    padding: 10px 12px;
+    border: 1px solid #E7B9B3;
+    border-radius: 8px;
+    background: #fff;
+    font-size: .92rem;
+    resize: vertical;
+}
+
+.reason-box textarea:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(176, 42, 30, .15);
+}
+
+.reason-box__actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+@media (max-width:860px) {
+    .stat-grid--three {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width:600px) {
+    .stat-grid--three {
+        grid-template-columns: 1fr;
+    }
+
+    .queue-badge {
+        align-self: center;
+    }
+}

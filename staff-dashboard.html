@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - BUK Student Exit Clearance System</title>
+    <link rel="icon" type="image/png" href="images/buk-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/staff.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <img src="images/buk-logo.png" alt="Bayero University, Kano logo">
+                <div class="sidebar__brand-name">BUK Exit Clearance<small>Staff portal</small></div>
+            </div>
+            <div class="sidebar__user"><strong id="side-name">Loading...</strong><span id="side-office"></span></div>
+            <nav>
+                <a class="active" href="staff-dashboard.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="9" />
+                        <rect x="14" y="3" width="7" height="5" />
+                        <rect x="14" y="12" width="7" height="9" />
+                        <rect x="3" y="16" width="7" height="5" />
+                    </svg>
+                    Dashboard
+                </a>
+            </nav>
+            <div class="sidebar__logout">
+                <button class="btn btn--outline btn--sm" id="logout-btn" style="width:100%;">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="page-error" class="message"></div>
+
+            <!-- The list of requests waiting for this office -->
+            <div id="list-view">
+                <section class="welcome-band">
+                    <div class="welcome-band__text">
+                        <p class="welcome-band__eyebrow">Clearance officer</p>
+                        <h1 id="welcome-title">Welcome</h1>
+                        <p class="welcome-band__sub" id="welcome-sub">Loading your requests...</p>
+                    </div>
+                    <div class="queue-badge"><span class="queue-badge__num" id="badge-num">0</span><span
+                            class="queue-badge__label">Waiting</span></div>
+                </section>
+
+                <div class="stat-grid stat-grid--three">
+                    <div class="stat-card stat-card--orange">
+                        <div class="stat-card__label">Pending Students</div>
+                        <div class="stat-card__num" id="stat-pending">-</div>
+                    </div>
+                    <div class="stat-card stat-card--green">
+                        <div class="stat-card__label">Cleared Today</div>
+                        <div class="stat-card__num" id="stat-today">-</div>
+                    </div>
+                    <div class="stat-card stat-card--red">
+                        <div class="stat-card__label">Rejected</div>
+                        <div class="stat-card__num" id="stat-rejected">-</div>
+                    </div>
+                </div>
+
+                <div class="field search-box">
+                    <label for="search">Search by name or matric number</label>
+                    <input type="text" id="search" placeholder="e.g. Amina or CST/22/CS/00458">
+                </div>
+
+                <div class="table-wrap">
+                    <table class="data">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Matric Number</th>
+                                <th>Status</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="queue-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- The review page for one student -->
+            <div id="detail-view" style="display:none;">
+                <button class="btn btn--outline btn--sm" id="back-btn" style="margin-bottom:18px;">&larr; Back to
+                    requests</button>
+
+                <div class="card">
+                    <h2 class="card__title">Student information</h2>
+                    <div class="profile-grid" id="detail-profile"></div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card__title">Clearance status across all eight offices</h2>
+                    <div class="table-wrap">
+                        <table class="data">
+                            <thead>
+                                <tr>
+                                    <th>Office</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detail-offices"></tbody>
+                        </table>
+                    </div>
+                    <div id="detail-note"></div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card__title" id="history-title">Previous action by this office</h2>
+                    <div id="detail-history"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card" id="fee-card" style="display:none;">
+                        <h2 class="card__title">Card fee</h2>
+                        <div id="fee-info"></div>
+                        <div class="detail-actions" id="fee-actions" style="margin-top:12px;"></div>
+                    </div>
+                    <h2 class="card__title">Your decision</h2>
+                    <div class="detail-actions">
+                        <button class="btn btn--success" id="clear-btn">Clear Student</button>
+                        <button class="btn btn--danger" id="reject-btn">Reject Student</button>
+                    </div>
+                    <div class="reason-box" id="reason-box">
+                        <label for="reason-text">Reason for rejection (required)</label>
+                        <textarea id="reason-text" placeholder="e.g. Library card has not been returned"></textarea>
+                        <div class="reason-box__actions">
+                            <button class="btn btn--outline btn--sm" id="reason-cancel">Cancel</button>
+                            <button class="btn btn--danger-solid btn--sm" id="reason-submit">Submit Rejection</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop">
+        <div class="modal" id="modal-box"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/staff-dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+/* Admin pages: page heading and the add-staff form */
+
+.page-head h1 {
+    font-size: 1.55rem;
+}
+
+.page-head p {
+    margin-top: 4px;
+    max-width: 660px;
+    font-size: .92rem;
+    color: var(--muted);
+}
+
+.admin-form {
+    max-width: 640px;
+}
+
+.form-hint {
+    margin-top: 4px;
+    font-size: .78rem;
+    color: var(--muted);
+}
+
+.office-note {
+    color: var(--muted);
+    font-size: .85rem;
+}

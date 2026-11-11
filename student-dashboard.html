@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - BUK Student Exit Clearance System</title>
+    <link rel="icon" type="image/png" href="images/buk-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <img src="images/buk-logo.png" alt="Bayero University, Kano logo">
+                <div class="sidebar__brand-name">BUK Exit Clearance<small>Student portal</small></div>
+            </div>
+            <div class="sidebar__user"><strong id="side-name">Loading...</strong><span id="side-matric"></span></div>
+            <nav>
+                <a class="active" href="student-dashboard.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="9" />
+                        <rect x="14" y="3" width="7" height="5" />
+                        <rect x="14" y="12" width="7" height="9" />
+                        <rect x="3" y="16" width="7" height="5" />
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="student-payments.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                    </svg>
+                    Payments
+                </a>
+            </nav>
+            <div class="sidebar__logout">
+                <button class="btn btn--outline btn--sm" id="logout-btn" style="width:100%;">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="page-error" class="message"></div>
+
+            <section class="welcome-band">
+                <div class="welcome-band__text">
+                    <p class="welcome-band__eyebrow">Your road to graduation</p>
+                    <h1 id="welcome-title">Welcome</h1>
+                    <p class="welcome-band__sub" id="welcome-sub">Loading your clearance progress...</p>
+                </div>
+                <div class="ring" aria-label="Clearance progress">
+                    <svg viewBox="0 0 100 100" width="112" height="112">
+                        <circle cx="50" cy="50" r="44" class="ring__track" />
+                        <circle cx="50" cy="50" r="44" class="ring__bar" id="ring-bar" />
+                    </svg>
+                    <div class="ring__text"><span class="ring__num" id="ring-num">0/8</span><span
+                            class="ring__label">Cleared</span></div>
+                </div>
+            </section>
+
+            <div class="stat-grid">
+                <div class="card" id="confirmation-banner"
+                    style="display:none; background:var(--green-pale); border-color:#CFE7D8; margin-top:18px;">
+                    <div
+                        style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+                        <div><strong style="color:#175F36;">All eight offices have cleared you.</strong> <span
+                                style="color:#1F7A45;">Your Clearance Confirmation is ready.</span></div>
+                        <a class="btn btn--success" href="student-confirmation.html">View Clearance Confirmation</a>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--green">
+                    <div class="stat-card__label">Cleared</div>
+                    <div class="stat-card__num" id="stat-cleared">-</div>
+                </div>
+                <div class="stat-card stat-card--orange">
+                    <div class="stat-card__label">Pending</div>
+                    <div class="stat-card__num" id="stat-pending">-</div>
+                </div>
+                <div class="stat-card stat-card--red">
+                    <div class="stat-card__label">Rejected</div>
+                    <div class="stat-card__num" id="stat-rejected">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__label">Outstanding amount</div>
+                    <div class="stat-card__num" id="stat-outstanding">-</div>
+                    <a class="stat-card__link" href="student-payments.html">View payments &rarr;</a>
+                </div>
+            </div>
+
+            <h2 class="section-title">Your clearance journey</h2>
+            <div class="card">
+                <div class="journey" id="journey"></div>
+            </div>
+
+            <h2 class="section-title">Clearance progress</h2>
+            <div class="table-wrap">
+                <table class="data">
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="progress-body"></tbody>
+                </table>
+            </div>
+
+            <h2 class="section-title">My profile</h2>
+            <div class="card">
+                <div class="profile-grid" id="profile-grid"></div>
+            </div>
+        </main>
+
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop">
+        <div class="modal" id="modal-box"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/student-dashboard.js"></script>
+</body>
+
+</html>

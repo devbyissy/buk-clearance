@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - BUK Student Exit Clearance System</title>
+
+    <link rel="icon" type="image/png" href="images/buk-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <header class="auth-hero">
+        <img src="images/buk-logo.png" alt="Bayero University, Kano logo" class="auth-logo">
+        <h1>BUK Student Exit Clearance System</h1>
+        <p class="auth-tagline">To lead in research and education in Africa</p>
+    </header>
+
+    <main class="auth-main">
+        <div class="auth-card auth-card--wide">
+
+            <h2>Create your account</h2>
+            <p class="auth-sub">For graduating students only</p>
+
+            <div id="message" class="message"></div>
+
+            <form id="register-form">
+
+                <div class="field">
+                    <label for="matric">Matric number</label>
+                    <input type="text" id="matric" placeholder="CST/22/CS/00123" required>
+                </div>
+
+                <div class="field">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" placeholder="e.g. Amina Sadiq" required>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="faculty">Faculty</label>
+                        <select id="faculty" required>
+                            <option value="">Loading...</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="department">Department</label>
+                        <select id="department" required>
+                            <option value="">Choose a faculty first</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="level">Level</label>
+                        <input type="text" id="level" placeholder="400 Level" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="you@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <div class="pw-wrap">
+                        <input type="password" id="password" placeholder="At least 8 characters" required>
+                        <button type="button" class="pw-toggle" id="pw-toggle">SHOW</button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="confirm-password">Confirm password</label>
+                    <div class="pw-wrap">
+                        <input type="password" id="confirm-password" placeholder="••••••••" required>
+                        <button type="button" class="pw-toggle" id="pw-toggle-2">SHOW</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--block" id="register-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="auth-foot">
+                Already have an account?
+                <a href="index.html">Log in</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="auth-footer">
+        &copy; Bayero University, Kano &middot; Final Year Project
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

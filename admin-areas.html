@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearance Areas - BUK Student Exit Clearance System</title>
+    <link rel="icon" type="image/png" href="images/buk-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <img src="images/buk-logo.png" alt="Bayero University, Kano logo">
+                <div class="sidebar__brand-name">BUK Exit Clearance<small>Administrator</small></div>
+            </div>
+            <div class="sidebar__user"><strong id="side-name">Loading...</strong><span>Administrator</span></div>
+            <nav>
+                <a href="admin-dashboard.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="9" />
+                        <rect x="14" y="3" width="7" height="5" />
+                        <rect x="14" y="12" width="7" height="9" />
+                        <rect x="3" y="16" width="7" height="5" />
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="admin-staff.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <circle cx="9" cy="8" r="3.5" />
+                        <path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" />
+                        <circle cx="17.5" cy="9" r="2.5" />
+                        <path d="M17 14.2c2.6.2 4.5 2 4.5 4.8" />
+                    </svg>
+                    Staff Accounts
+                </a>
+                <a class="active" href="admin-areas.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                        <line x1="9" y1="10" x2="9" y2="20" />
+                    </svg>
+                    Clearance Areas
+                </a>
+            </nav>
+            <div class="sidebar__logout">
+                <button class="btn btn--outline btn--sm" id="logout-btn" style="width:100%;">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="page-error" class="message"></div>
+
+            <div class="page-head">
+                <h1>Clearance Areas</h1>
+                <p>The eight offices a student must clear, in order, and the officer assigned to each.</p>
+            </div>
+
+            <h2 class="section-title">Offices</h2>
+            <div class="table-wrap">
+                <table class="data">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Clearance area</th>
+                            <th>Stage</th>
+                            <th>Assigned staff</th>
+                        </tr>
+                    </thead>
+                    <tbody id="areas-body"></tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/admin-areas.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearance Confirmation - BUK Student Exit Clearance System</title>
+    <link rel="icon" type="image/png" href="images/buk-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/confirmation.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <img src="images/buk-logo.png" alt="Bayero University, Kano logo">
+                <div class="sidebar__brand-name">BUK Exit Clearance<small>Student portal</small></div>
+            </div>
+            <div class="sidebar__user"><strong id="side-name">Loading...</strong><span id="side-matric"></span></div>
+            <nav>
+                <a href="student-dashboard.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="9" />
+                        <rect x="14" y="3" width="7" height="5" />
+                        <rect x="14" y="12" width="7" height="9" />
+                        <rect x="3" y="16" width="7" height="5" />
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="student-payments.html">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                    </svg>
+                    Payments
+                </a>
+            </nav>
+            <div class="sidebar__logout">
+                <button class="btn btn--outline btn--sm" id="logout-btn" style="width:100%;">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="page-error" class="message"></div>
+
+            <!-- Shown when the confirmation has not been issued yet -->
+            <div class="card confirm-empty" id="not-ready" style="display:none;">
+                <h2>Your Clearance Confirmation is not ready yet</h2>
+                <p>It is issued automatically, and only once all eight clearance offices have cleared you. Go back to
+                    your dashboard to see what is still outstanding.</p>
+                <a class="btn" href="student-dashboard.html">Back to dashboard</a>
+            </div>
+
+            <!-- The confirmation itself -->
+            <div id="confirmation" style="display:none;">
+                <div class="confirm-actions">
+                    <button class="btn" id="print-btn">Print</button>
+                    <button class="btn btn--outline" id="download-btn">Download as PDF</button>
+                </div>
+
+                <div class="confirm-doc">
+                    <div class="confirm-doc__head">
+                        <img src="images/buk-logo.png" alt="Bayero University, Kano logo">
+                        <div class="confirm-doc__uni">Bayero University, Kano</div>
+                        <h1 class="confirm-doc__title">Clearance Confirmation</h1>
+                    </div>
+                    <div class="confirm-doc__body">
+                        <div class="confirm-status"><span>&#10003;</span> Fully Cleared</div>
+
+                        <div class="confirm-grid">
+                            <div><span>Name</span><strong id="c-name"></strong></div>
+                            <div><span>Matric number</span><strong id="c-matric"></strong></div>
+                            <div><span>Faculty</span><strong id="c-faculty"></strong></div>
+                            <div><span>Department</span><strong id="c-department"></strong></div>
+                            <div><span>Confirmation code</span><strong class="confirm-code" id="c-code"></strong></div>
+                            <div><span>Date issued</span><strong id="c-date"></strong></div>
+                        </div>
+
+                        <h2>Cleared by all eight offices</h2>
+                        <div class="table-wrap">
+                            <table class="data">
+                                <thead>
+                                    <tr>
+                                        <th>Office</th>
+                                        <th>Status</th>
+                                        <th>Date cleared</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="c-offices"></tbody>
+                            </table>
+                        </div>
+
+                        <p class="confirm-foot">Issued electronically by the BUK Student Exit Clearance System. This
+                            confirmation is valid only with the confirmation code above.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/student-confirmation.js"></script>
+</body>
+
+</html>

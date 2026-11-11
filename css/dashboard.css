@@ -1,0 +1,301 @@
+/* Student dashboard extras: welcome band, progress ring and the clearance journey */
+
+.welcome-band {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: linear-gradient(120deg, var(--blue) 0%, #0B80B8 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+}
+
+.welcome-band::before {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -80px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 164, 201, .45) 0%, rgba(0, 164, 201, 0) 70%);
+}
+
+.welcome-band__text {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-band__eyebrow {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #BFE0F0;
+    margin-bottom: 6px;
+}
+
+.welcome-band h1 {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.welcome-band__sub {
+    margin-top: 8px;
+    font-size: .95rem;
+    color: #D6EAF5;
+    max-width: 420px;
+}
+
+.ring {
+    position: relative;
+    width: 112px;
+    height: 112px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.ring svg {
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.ring__track {
+    fill: none;
+    stroke: rgba(255, 255, 255, .25);
+    stroke-width: 9;
+}
+
+.ring__bar {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-dasharray: 0 276.46;
+    transition: stroke-dasharray .9s ease;
+}
+
+.ring__text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ring__num {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.ring__label {
+    font-size: .6rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #CFE6F2;
+    margin-top: 5px;
+}
+
+.stat-card__link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: .78rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.stat-card__link:hover {
+    text-decoration: underline;
+}
+
+/* Clearance journey: the eight areas as stations on one road */
+.journey {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 6px 4px 8px;
+}
+
+.station {
+    position: relative;
+    flex: 1 0 96px;
+    min-width: 96px;
+    text-align: center;
+}
+
+.station::before {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: -50%;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    z-index: 0;
+}
+
+.station:first-child::before {
+    display: none;
+}
+
+.station--Cleared::before {
+    background: var(--green-bright);
+}
+
+.station__dot {
+    position: relative;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 3px solid var(--border);
+    color: var(--muted);
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+.station--Cleared .station__dot {
+    background: var(--green-bright);
+    border-color: var(--green-bright);
+    color: #fff;
+}
+
+.station--Pending .station__dot {
+    border-color: var(--orange-bright);
+    color: var(--orange);
+}
+
+.station--Rejected .station__dot {
+    background: var(--red-bright);
+    border-color: var(--red-bright);
+    color: #fff;
+}
+
+.station__name {
+    margin-top: 10px;
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1.25;
+    padding: 0 4px;
+}
+
+.station__status {
+    margin-top: 2px;
+    font-size: .7rem;
+    color: var(--muted);
+}
+
+.req-note {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--blue-pale);
+    border-radius: 8px;
+    font-size: .88rem;
+    color: var(--navy);
+}
+
+.req-note strong {
+    display: block;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 3px;
+}
+
+.modal__actions {
+    text-align: right;
+    margin-top: 18px;
+}
+
+@media (max-width:600px) {
+    .welcome-band {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 22px;
+    }
+
+    .ring {
+        align-self: center;
+    }
+}
+
+/* ---------- Clearance workflow states: Locked, ready to request, buttons ---------- */
+.icon--sm {
+    width: 13px;
+    height: 13px;
+}
+
+.pill--Locked {
+    background: #EDF1F4;
+    color: #5B6B77;
+}
+
+.pill--Locked::before {
+    display: none;
+}
+
+.not-requested {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.lock-hint {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.row-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.modal__actions .btn+.btn {
+    margin-left: 8px;
+}
+
+/* The road turns blue as each station opens; stations show their own state */
+.station--Cleared::before {
+    background: var(--border);
+}
+
+.station--road::before {
+    background: var(--blue);
+}
+
+.station--Locked .station__dot {
+    background: #F3F6F8;
+    border: 3px dashed #C2CED6;
+    color: #8A99A5;
+}
+
+.station--Locked .station__name {
+    color: var(--muted);
+}
+
+.station--Open .station__dot {
+    border-color: var(--blue);
+    color: var(--blue);
+    box-shadow: 0 0 0 5px rgba(2, 102, 157, .14);
+}
+
+/* A fee that an officer has waived */
+.pill--Waived {
+    background: #EDF1F4;
+    color: #5B6B77;
+}
